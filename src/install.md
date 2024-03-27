@@ -1,25 +1,25 @@
 # Installation Guide
 
-Welcome to the ADN installation guide. This document provides step-by-step instructions on how to set up ADN and its dependencies.
+Welcome to the AppNet installation guide. This document provides step-by-step instructions on how to set up AppNet and its dependencies.
 
 Requirements:
  - [Kubernetes](#kubernetes) (v1.28+) 
- - [Istio](#installing-adnistio) (v1.20+)
+ - [Istio](#istio) (v1.20+)
  - [Python](#python) (v3.10+)
  - [Go](#go) (v1.19+)
  - [Rust](#rust) (v1.71+)
  - [protoc](#protoc)
 
 
-First, clone the ADN repo:
+First, clone the AppNet repo:
 ```bash
-git clone git@github.com:UWNetworksLab/adn-controller.git
-cd adn-controller
+git clone git@github.com:appnet-org/controller.git --recursive
+cd controller
 ```
 
 ### Install the CLI
 
-`adnctl` is a command line program to manage the ADN control plane.
+`adnctl` is a command line program to manage the AppNet control plane.
 
 To install the CLI, run
 ```bash

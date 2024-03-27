@@ -3,7 +3,7 @@ authors = ["Xiangfeng Zhu"]
 language = "en"
 multilingual = false
 src = "src"
-title = "ADN Documentation"
+title = "AppNet Documentation"
 
 [output.html]
 site-url = "/"
