@@ -1,5 +1,7 @@
 # AppNet Documentation
 
+This repository contains the source code for appnet.wiki
+
 ## Quick Start
 1. Install mdbook:
 ```bash
