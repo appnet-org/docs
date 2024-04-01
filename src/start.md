@@ -19,11 +19,11 @@ kubectl apply -f samples/echo/echo.yaml
 
 Then, verify the deployment:
 ```bash
-user@h1:~/adn-controller$ kubectl get pods
+user@h1:~/appnet$ kubectl get pods
 NAME                             READY   STATUS    RESTARTS   AGE
 echo-frontend-6f9cf6db74-tjvfc   2/2     Running   0          14m
 echo-server-594b4797d-9t6gn      2/2     Running   0          14m
-user@h1:~/adn-controller$ curl http://10.96.88.88/hello_world
+user@h1:~/appnet$ curl http://10.96.88.88/hello_world
 Echo request finished! Length of the request is 12
 ```
 
@@ -33,8 +33,8 @@ We will deploy the following chain to the frontend to server edge.
 
 ![Example Chain](./figures/echo-chain.png "Example Chain")
 
-### Run the ADN controller
-First, you need to run the ADN controller
+### Run the AppNet controller
+First, you need to run the AppNet controller
 ```bash
 make run
 ```
@@ -85,11 +85,11 @@ Finally, test the installation by running:
 
 When you're finish experimenting with the echo application, uninstall and clean it up using the following command:
 ```bash
-kubectl delete all,pvc,pv,envoyfilters,adnconfigs --all
+kubectl delete all,pvc,pv,envoyfilters,appnetconfigs --all
 ```
 
 # Next Steps
 [TODO]
 
-Learn the ADN grammar.
-How does ADN optimize chain.
+Learn the AppNet element grammar.
+How does AppNet optimize chain.

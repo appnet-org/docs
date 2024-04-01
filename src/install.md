@@ -5,21 +5,23 @@ Welcome to the AppNet installation guide. This document provides step-by-step in
 Requirements:
  - [Kubernetes](#kubernetes) (v1.28+) 
  - [Istio](#istio) (v1.20+)
- - [Python](#python) (v3.10+)
  - [Go](#go) (v1.19+)
  - [Rust](#rust) (v1.71+)
  - [protoc](#protoc)
+ - Conda
 
 
 First, clone the AppNet repo:
 ```bash
-git clone git@github.com:appnet-org/controller.git --recursive
-cd controller
+git clone git@github.com:appnet-org/appnet.git --recursive
+cd appnet
+conda create -y -n appnet python=3.10
+conda activate appnet
 ```
 
 ### Install the CLI
 
-`adnctl` is a command line program to manage the AppNet control plane.
+`appnetctl` is a command line program to manage the AppNet control plane.
 
 To install the CLI, run
 ```bash
@@ -28,7 +30,7 @@ To install the CLI, run
 
 Once installed, verify the CLI is running correctly with:
 ```bash
-adnctl version
+appnetctl version
 ```
 
 Lastly, install the CRDs into the cluster:
@@ -84,7 +86,7 @@ Istio can be installed in either sidecar mode or ambient mode. Choose the one th
 . ./utils/istio_setup_ambient.sh
 ```
 
-
+<!-- 
 ### Python
 
 To install Python, refer to the official [Python Downloads Page]((https://www.python.org/downloads/)).
@@ -93,7 +95,7 @@ To install Python, refer to the official [Python Downloads Page]((https://www.py
 For Ubuntu users, Python 3.10 can be installed conveniently using the following command:
 ```bash
 . ./utils/python310.sh
-```
+``` -->
 
 ### Go
 

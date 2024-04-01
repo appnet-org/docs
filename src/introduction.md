@@ -24,7 +24,7 @@ The data plane is composed of processors—such as sidecars, middleboxes, and RP
 - [mRPC](https://github.com/phoenix-dataplane/phoenix)
 - [Istio](https://istio.io/)(Envoy)
     - Sidecar Mode
-    - Ambient Mode
+    - Ambient Mode (in progress)
 - [gRPC](https://grpc.io/) (via Interceptors) (in progress)
 
 ## Getting help
