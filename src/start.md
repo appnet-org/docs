@@ -39,38 +39,35 @@ First, you need to run the AppNet controller
 make run
 ```
 
-For this element chain the ADN configurations is as follows:
+For this element chain the AppNet configurations is as follows:
 ```yaml
-apiVersion: api.core.adn.io/v1
-kind: Adnconfig
+apiVersion: api.core.appnet.io/v1
+kind: AppNetConfig
 metadata:
-  name: sample-echo # Name of the Adnconfig
+  name: sample-echo # Name of the AppNetConfig
 spec:
   appName: echo # Name of the application
-  clientService: frontend # Name of the client service (must be a valid service in the same namespace as the Adnconfig)
-  serverService: server # Name of the server service (must be a valid service in the same namespace as the Adnconfig)
+  clientService: frontend # Name of the client service (must be a valid service in the same namespace as the AppNetConfig)
+  serverService: server # Name of the server service (must be a valid service in the same namespace as the AppNetConfig)
   method: echo # Name of the RPC method (defined in the proto file)
-  appManifestFile: /users/xzhu/adn-controller/config/samples/echo/echo.yaml # Path to the application manifest file
+  appManifestFile: <APPNET_DIR_PATH>/config/samples/echo/echo.yaml # Path to the application manifest file
   clientChain:
     - name: fault # Name of the first element in the client chain
-      file: /users/xzhu/adn-controller/config/samples/echo/fault.adn # Path to the fault injection element file
-      parameters:
-        probability: "0.02" # Probability of fault injection
+      file: <APPNET_DIR_PATH>/config/samples/echo/fault.adn # Path to the fault injection element file
     - name: logging # Name of the second element in the client chain
-      file: /users/xzhu/adn-controller/config/samples/echo/logging.adn # Path to the logging element file
+      file: <APPNET_DIR_PATH>/config/samples/echo/logging.adn # Path to the logging element file
   serverChain:
     - name: firwall # Name of the first element in the server chain
-      file: /users/xzhu/adn-controller/config/samples/echo/firewall.adn # Path to the firewall element file
-      parameters:
-        body: apple # Key and value to be used in the firewall element
+      file: <APPNET_DIR_PATH>/config/samples/echo/firewall.adn # Path to the firewall element file
   anyChain:
     - name: metrics # Name of the first element in the any(unconstraint) chain
-      file: /users/xzhu/adn-controller/config/samples/echo/metrics.adn # Path to the metrics element file
-  proto: /users/xzhu/adn-controller/config/samples/echo/echo.proto # Path to the protobuf definition of client service to server service communication
+      file: <APPNET_DIR_PATH>/config/samples/echo/metrics.adn # Path to the metrics element file
+  proto: <APPNET_DIR_PATH>/config/samples/echo/echo.proto # Path to the protobuf definition of client service to server service communication
 ```
 
-Next, in a seperate terminal, apply this yaml file:
+Next, in a seperate terminal, replace `<APPNET_DIR_PATH>` with your AppNet directory path and apply this yaml file:
 ```bash
+sed -i 's|<APPNET_DIR_PATH>|'"$(pwd)"'|g' config/samples/echo/sample_echo.yaml
 kubectl apply -f config/samples/echo/sample_echo.yaml
 ```
 
@@ -78,7 +75,12 @@ You should some logs in the controller indicating it is reconciling, which shoul
 
 Finally, test the installation by running:
 ```bash
-# TODO
+user@h1:~/appnet$ curl http://10.96.88.88?key=hello
+You've hit server-6646d696cb-mx95h
+
+# The test request will be blocked by the firewall
+user@h1:~/appnet$ curl http://10.96.88.88?key=test
+Echo server returns an error.
 ```
 
 # Clean Up
@@ -89,7 +91,6 @@ kubectl delete all,pvc,pv,envoyfilters,appnetconfigs --all
 ```
 
 # Next Steps
-[TODO]
 
-Learn the AppNet element grammar.
-How does AppNet optimize chain.
+- Learn the AppNet element grammar.
+- How does AppNet optimize chain?

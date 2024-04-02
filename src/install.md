@@ -28,9 +28,10 @@ To install the CLI, run
 . ./install.sh
 ```
 
-Once installed, verify the CLI is running correctly with:
+Once installed, verify the CLI and other tools is running correctly with:
 ```bash
 appnetctl version
+appnetctl verify
 ```
 
 Lastly, install the CRDs into the cluster:
@@ -70,7 +71,7 @@ kubectl version
 
 For additional installation methods (e.g., KIND, Minikube), visit this [page](https://kubernetes.io/docs/tasks/tools/)
 
-(Optional) We highly recommend installing [k9s](https://k9scli.io/topics/install/) for visualizing your clutser
+(Optional) We highly recommend installing [k9s](https://k9scli.io/topics/install/) for visualizing your clutser.
 
 ### Istio
 
