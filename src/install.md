@@ -8,7 +8,7 @@ Requirements:
  - [Go](#go) (v1.19+)
  - [Rust](#rust) (v1.71+)
  - [protoc](#protoc)
- - Conda
+ - [Conda](#conda)
 
 
 First, clone the AppNet repo:
@@ -115,3 +115,7 @@ sudo apt -y install protobuf-compiler
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 ```
+
+### Conda
+
+See this [page](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) for installation instructions.
