@@ -14,7 +14,7 @@ The Echo application is a simple application developed using Go and gRPC. The cl
 ### Deploy 
 Run the following command to deploy the echo application.
 ```
-kubectl apply -f samples/echo/echo.yaml
+kubectl apply -f config/samples/echo/echo.yaml
 ```
 
 Then, verify the deployment:

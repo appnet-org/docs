@@ -119,3 +119,9 @@ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 ### Conda
 
 See this [page](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) for installation instructions.
+
+For ubuntu users:
+```bash
+wget https://repo.anaconda.com/miniconda/Miniconda3-py310_23.3.1-0-Linux-x86_64.sh -O Miniconda.sh
+bash Miniconda.sh
+```
