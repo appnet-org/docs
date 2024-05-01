@@ -41,6 +41,12 @@ make run
 
 For this element chain the AppNet configurations is as follows:
 ```yaml
+apiVersion: api.core.appnet.io/v1
+kind: AppNetConfig
+metadata:
+  name: sample-echo # Name of the AppNetConfig
+spec:
+  appName: echo # Name of the application
   clientService: frontend # Name of the client service (must be a valid service in the same namespace as the AppNetConfig)
   serverService: server # Name of the server service (must be a valid service in the same namespace as the AppNetConfig)
   method: echo # Name of the RPC method (defined in the proto file)
