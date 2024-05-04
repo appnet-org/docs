@@ -23,8 +23,8 @@ user@h1:~/appnet$ kubectl get pods
 NAME                             READY   STATUS    RESTARTS   AGE
 echo-frontend-6f9cf6db74-tjvfc   2/2     Running   0          14m
 echo-server-594b4797d-9t6gn      2/2     Running   0          14m
-user@h1:~/appnet$ curl http://10.96.88.88/hello_world
-Echo request finished! Length of the request is 12
+user@h1:~/appnet$ curl http://10.96.88.88?key=hello
+You've hit server-986b8c7c6-725kd
 ```
 
 ## Example element chain
