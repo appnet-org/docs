@@ -46,6 +46,7 @@ kind: AppNetConfig
 metadata:
   name: sample-echo # Name of the AppNetConfig
 spec:
+  backend: ambient # Name of the backend (sidecar/ambient/grpc)
   appName: echo # Name of the application
   clientService: frontend # Name of the client service (must be a valid service in the same namespace as the AppNetConfig)
   serverService: server # Name of the server service (must be a valid service in the same namespace as the AppNetConfig)
@@ -53,16 +54,16 @@ spec:
   appManifestFile: <APPNET_DIR_PATH>/config/samples/echo/echo.yaml # Path to the application manifest file
   clientChain:
     - name: fault # Name of the first element in the client chain
-      file: <APPNET_DIR_PATH>/appnet/config/samples/echo/fault.adn # Path to the fault injection element file
+      file: <APPNET_DIR_PATH>/config/samples/echo/fault.appnet # Path to the fault injection element file
     - name: logging # Name of the second element in the client chain
-      file: <APPNET_DIR_PATH>/appnet/config/samples/echo/logging.adn # Path to the logging element file
+      file: <APPNET_DIR_PATH>/config/samples/echo/logging.appnet # Path to the logging element file
   serverChain:
     - name: firwall # Name of the first element in the server chain
-      file: <APPNET_DIR_PATH>/appnet/config/samples/echo/firewall.adn # Path to the firewall element file
+      file: <APPNET_DIR_PATH>/config/samples/echo/firewall.appnet # Path to the firewall element file
   anyChain:
     - name: metrics # Name of the first element in the any(unconstraint) chain
-      file: <APPNET_DIR_PATH>/appnet/config/samples/echo/metrics.adn # Path to the metrics element file
-  proto: <APPNET_DIR_PATH>/appnet/config/samples/echo/echo.proto # Path to the protobuf definition of client service to server service communication
+      file: <APPNET_DIR_PATH>/config/samples/echo/metrics.appnet # Path to the metrics element file
+  proto: <APPNET_DIR_PATH>/config/samples/echo/echo.proto # Path to the protobuf definition of client service to server service communication
 ```
 
 Next, in a seperate terminal, replace `<APPNET_DIR_PATH>` with your AppNet directory path and apply this yaml file:
