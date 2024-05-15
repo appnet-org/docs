@@ -46,7 +46,7 @@ kind: AppNetConfig
 metadata:
   name: sample-echo # Name of the AppNetConfig
 spec:
-  backend: ambient # Name of the backend (sidecar/ambient/grpc)
+  backend: sidecar # Name of the backend (sidecar/ambient/grpc)
   appName: echo # Name of the application
   clientService: frontend # Name of the client service (must be a valid service in the same namespace as the AppNetConfig)
   serverService: server # Name of the server service (must be a valid service in the same namespace as the AppNetConfig)
@@ -68,8 +68,8 @@ spec:
 
 Next, in a seperate terminal, replace `<APPNET_DIR_PATH>` with your AppNet directory path and apply this yaml file:
 ```
-sed -i 's|<APPNET_DIR_PATH>|'"$(pwd)"'|g' config/samples/echo/sample_echo.yaml
-kubectl apply -f config/samples/echo/sample_echo.yaml
+sed -i 's|<APPNET_DIR_PATH>|'"$(pwd)"'|g' config/samples/echo/sample_echo_sidecar.yaml
+kubectl apply -f config/samples/echo/sample_echo_sidecar.yaml
 ```
 
 You should some logs in the controller indicating it is reconciling, which should finish in a few minutes. 
@@ -89,6 +89,7 @@ The test request will be blocked by the firewall element.
 When you're finish experimenting with the echo application, uninstall and clean it up using the following command:
 ```bash
 kubectl delete all,pvc,pv,envoyfilters,appnetconfigs --all
+istioctl experimental waypoint delete --all
 ```
 
 # Next Steps

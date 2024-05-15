@@ -26,6 +26,7 @@ The data plane is composed of processors—such as sidecars, middleboxes, and RP
     - Sidecar Mode
     - Ambient Mode 
 - [gRPC](https://grpc.io/) (via Interceptors) 
+    - Only gRPC-go is supported 
 
 ## Getting help
 
