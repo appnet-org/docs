@@ -88,7 +88,7 @@ The test request will be blocked by the firewall element.
 
 When you're finish experimenting with the echo application, uninstall and clean it up using the following command:
 ```bash
-kubectl delete all,pvc,pv,envoyfilters,appnetconfigs --all
+kubectl delete all,sa,pvc,pv,envoyfilters,appnetconfigs --all
 istioctl experimental waypoint delete --all
 ```
 
