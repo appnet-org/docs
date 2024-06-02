@@ -112,8 +112,6 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 Install the Protocol Buffers Compiler and the necessary Go plugins with these commands:
 ```bash
 sudo apt -y install protobuf-compiler
-go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 ```
 
 ### Conda
