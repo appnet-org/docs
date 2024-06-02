@@ -67,9 +67,18 @@ spec:
 ```
 
 Next, in a seperate terminal, replace `<APPNET_DIR_PATH>` with your AppNet directory path and apply this yaml file:
-```
+```bash
+# Via sidecar Mode
 sed -i 's|<APPNET_DIR_PATH>|'"$(pwd)"'|g' config/samples/echo/sample_echo_sidecar.yaml
 kubectl apply -f config/samples/echo/sample_echo_sidecar.yaml
+
+# Via ambient Mode
+sed -i 's|<APPNET_DIR_PATH>|'"$(pwd)"'|g' config/samples/echo/sample_echo_ambient.yaml
+kubectl apply -f config/samples/echo/sample_echo_ambient.yaml
+
+# gRPC Interceptor
+sed -i 's|<APPNET_DIR_PATH>|'"$(pwd)"'|g' config/samples/echo/sample_echo_grpc.yaml
+kubectl apply -f config/samples/echo/sample_echo_grpc.yaml
 ```
 
 You should some logs in the controller indicating it is reconciling, which should finish in a few minutes. 
