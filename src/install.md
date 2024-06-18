@@ -2,39 +2,56 @@
 
 Welcome to the AppNet installation guide. This document provides step-by-step instructions on how to set up AppNet and its dependencies.
 
-Requirements:
- - [Kubernetes](#kubernetes) (v1.28+) 
- - [Istio](#istio) (v1.20+)
- - [Go](#go) (v1.19+)
- - [Rust](#rust) (v1.71+)
- - [protoc](#protoc)
- - [Conda](#conda)
+> **Note:** The following scripts are tested on Ubuntu 20.04. We plan to add support for other platforms soon.
 
+### Cloning the Repository
 
 First, clone the AppNet repo:
 ```bash
 git clone git@github.com:appnet-org/appnet.git --recursive
 cd appnet
+```
+
+Before you start, make sure you have the following installed:
+
+Requirements:
+ - [Kubernetes](#kubernetes) (v1.28+) 
+ - [Istio](#istio) (v1.20+)
+ - [Go](#go) (v1.22.2)
+ - [Rust](#rust) (v1.71+)
+ - [protoc](#protoc)
+ - [Conda](#conda)
+
+
+### Install the CLI
+
+`appnetctl` is a command line program to manage the AppNet control plane. To install the CLI, follow these steps:
+
+1. Create a Conda environment:
+```bash
 conda create -y -n appnet python=3.10
 conda activate appnet
 ```
 
-### Install the CLI
-
-`appnetctl` is a command line program to manage the AppNet control plane.
-
-To install the CLI, run
+2. Run the installation script:
 ```bash
 . ./install.sh
 ```
 
-Once installed, verify the CLI and other tools is running correctly with:
+3. Verify the CLI and other tools are running correctly:
 ```bash
-appnetctl version
-appnetctl verify
+user@h1:~/appnet$ appnetctl version
+Version: v0.1.0
+user@h1:~/appnet$ appnetctl verify
+Verifying AppNet installation status...
+✔ Python installed.
+✔ Rust installed.
+✔ Kubernetes installed.
+✔ protoc installed.
+✔ Istio installed.
 ```
 
-Lastly, install the CRDs into the cluster:
+4. Lastly, install the CRDs into the cluster:
 
 ```sh
 make install
@@ -69,7 +86,7 @@ Note: if you plan to use a multi-node cluster, make sure you can ssh other nodes
 kubectl version
 ```
 
-For additional installation methods (e.g., KIND, Minikube), visit this [page](https://kubernetes.io/docs/tasks/tools/)
+For additional installation options (e.g., KIND, Minikube), visit this [page](https://kubernetes.io/docs/tasks/tools/)
 
 (Optional) We highly recommend installing [k9s](https://k9scli.io/topics/install/) for visualizing your clutser.
 
@@ -87,20 +104,16 @@ Istio can be installed in either sidecar mode or ambient mode. Choose the one th
 . ./utils/istio_setup_ambient.sh
 ```
 
-<!-- 
-### Python
-
-To install Python, refer to the official [Python Downloads Page]((https://www.python.org/downloads/)).
-
-
-For Ubuntu users, Python 3.10 can be installed conveniently using the following command:
-```bash
-. ./utils/python310.sh
-``` -->
-
 ### Go
 
-See this [page](https://go.dev/doc/install) for installation instructions.
+Install Go by running the following command:
+```
+wget https://go.dev/dl/go1.22.2.linux-amd64.tar.gz
+sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.22.2.linux-amd64.tar.gz
+
+echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.bashrc
+source ~/.bashrc
+```
 
 ### Rust
 Install Rust by running the following command:
@@ -118,7 +131,7 @@ sudo apt -y install protobuf-compiler
 
 See this [page](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) for installation instructions.
 
-For ubuntu users:
+For Ubuntu users:
 ```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-py310_23.3.1-0-Linux-x86_64.sh -O Miniconda.sh
 bash Miniconda.sh

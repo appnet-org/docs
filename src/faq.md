@@ -1,7 +1,10 @@
 # Frequently Asked Questions
 
-## Installation
+### Documentation coming 
+
+
+<!-- ## Installation
 
 ## Abstraction
 
-## Compiler
+## Compiler -->
