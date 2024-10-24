@@ -92,7 +92,7 @@ For additional installation options (e.g., KIND, Minikube), visit this [page](ht
 
 ### Istio
 
-Istio can be installed in either sidecar mode or ambient mode. Choose the one that best fits your requirements:
+Istio can be installed in either sidecar mode or ambient mode. Choose the one that best fits your requirements (if you want to use both sidecar and ambient mode, please install using ambient script):
 
 - Sidecar Mode
 ```bash

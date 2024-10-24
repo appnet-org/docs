@@ -10,7 +10,7 @@
 Changes can be made in this [file](https://github.com/appnet-org/appnet/blob/main/api/v1/appnetconfig_types.go#L32).
 
 ```bash
-make generate
+make install
 ```
 
 ### Run controller locally
