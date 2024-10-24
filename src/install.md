@@ -16,7 +16,8 @@ Before you start, make sure you have the following installed:
 
 Requirements:
  - [Kubernetes](#kubernetes) (v1.28+) 
- - [Istio](#istio) (v1.20+)
+ - [Istio](#istio) (v1.22.x) 
+    - Note: AppNet's support for istio 1.23.x is in progress.
  - [Go](#go) (v1.22.2)
  - [Rust](#rust) (v1.71+)
  - [protoc](#protoc)
