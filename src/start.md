@@ -44,9 +44,10 @@ For this element chain the AppNet configurations is as follows:
 apiVersion: api.core.appnet.io/v1
 kind: AppNetConfig
 metadata:
-  name: sample-echo # Name of the AppNetConfig
+  name: sample-echo-sidecar # Name of the AppNetConfig
 spec:
-  backend: sidecar # Name of the backend (sidecar/ambient/grpc)
+  processors: # Processors (sidecar/ambient/grpc)
+    - sidecar 
   appName: echo # Name of the application
   clientService: frontend # Name of the client service (must be a valid service in the same namespace as the AppNetConfig)
   serverService: server # Name of the server service (must be a valid service in the same namespace as the AppNetConfig)
@@ -58,7 +59,7 @@ spec:
     - name: logging # Name of the second element in the client chain
       file: <APPNET_DIR_PATH>/config/samples/echo/logging.appnet # Path to the logging element file
   serverChain:
-    - name: firwall # Name of the first element in the server chain
+    - name: firewall # Name of the first element in the server chain
       file: <APPNET_DIR_PATH>/config/samples/echo/firewall.appnet # Path to the firewall element file
   anyChain:
     - name: metrics # Name of the first element in the any(unconstraint) chain
@@ -68,15 +69,15 @@ spec:
 
 Next, in a seperate terminal, replace `<APPNET_DIR_PATH>` with your AppNet directory path and apply this yaml file:
 ```bash
-# Via sidecar Mode
+# Via Istio sidecar Mode
 sed -i 's|<APPNET_DIR_PATH>|'"$(pwd)"'|g' config/samples/echo/sample_echo_sidecar.yaml
 kubectl apply -f config/samples/echo/sample_echo_sidecar.yaml
 
-# Via ambient Mode
+# Via Istio ambient Mode
 sed -i 's|<APPNET_DIR_PATH>|'"$(pwd)"'|g' config/samples/echo/sample_echo_ambient.yaml
 kubectl apply -f config/samples/echo/sample_echo_ambient.yaml
 
-# gRPC Interceptor
+# Via gRPC Interceptor (proxyless mode)
 sed -i 's|<APPNET_DIR_PATH>|'"$(pwd)"'|g' config/samples/echo/sample_echo_grpc.yaml
 kubectl apply -f config/samples/echo/sample_echo_grpc.yaml
 ```
