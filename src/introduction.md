@@ -7,7 +7,7 @@
 
 AppNet is a framework designed for constructing high-performance application networks for microservices. At its core, AppNet offers a high-level abstraction that facilitates the creation of expressive and performant application networks. Users can define rich, possibly stateful, layer-7 (RPC) processing through match-action rules. AppNet's compiler compiles these specifications and generates high-performance code by optimizing where and how to execute different RPC processing functions.
 
-Details are available in our [arxiv paper]() and [talk](). (To be added)
+Details are available in our [NSDI paper]() and [talk](). (To be added)
 
 ## Architecture Overview
 ![AppNet Architecure](./figures/appnet-arch.png "AppNet Architecure")
@@ -22,11 +22,15 @@ The data plane is composed of processors—such as sidecars, middleboxes, and RP
 ## Supported Data Plane Processors
 
 - [mRPC](https://github.com/phoenix-dataplane/phoenix)
-- [Istio](https://istio.io/)(Envoy)
+- [Istio](https://istio.io/)(Envoy - via both native filters and WASM plugin)
     - Sidecar Mode
     - Ambient Mode 
 - [gRPC](https://grpc.io/) (via Interceptors) 
     - Only gRPC-go is supported 
+
+## Contributors
+
+AppNet is written and maintained by [Xiangfeng Zhu](https://xzhu27.me/), [Yuyao Wang](https://kristoff-starling.github.io/), [Yongtong Wu](https://jokerwyt.github.io/), [Nikola Bojanic](https://github.com/NikolaBo), and [Banruo Liu](https://github.com/livingshade).
 
 ## Getting help
 
