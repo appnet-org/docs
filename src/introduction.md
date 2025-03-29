@@ -7,7 +7,7 @@
 
 AppNet is a framework designed for constructing high-performance application networks for microservices. At its core, AppNet offers a high-level abstraction that facilitates the creation of expressive and performant application networks. Users can define rich, possibly stateful, layer-7 (RPC) processing through match-action rules. AppNet's compiler compiles these specifications and generates high-performance code by optimizing where and how to execute different RPC processing functions.
 
-Details are available in our [NSDI paper]() and [talk](). (To be added)
+Details are available in our [NSDI paper](https://xzhu27.me/papers/appnet-nsdi25.pdf).
 
 ## Architecture Overview
 ![AppNet Architecure](./figures/appnet-arch.png "AppNet Architecure")
