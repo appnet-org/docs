@@ -12,11 +12,17 @@ Details are available in our [NSDI paper](https://www.usenix.org/conference/nsdi
 ## Architecture Overview
 ![AppNet Architecure](./figures/appnet-arch.png "AppNet Architecure")
 
-AppNet consists of three main components - the AppNet program, the control plane and the data plane. The AppNet program orchestrates the network functionality among microservices through a sequence of elements, detailing each element with match-action rules that govern RPC content and element state.
+AppNet's architecture comprises three key components:
 
-The control plane includes a compiler that processes RPC definitions and chain specifications to produce code modules and a controller has global knowledge (acquired via cluster managers such as Kubernetes) of the network topology, service locations, and available AppNet data plane processors. It provisions network processing on available processors.
+1. **AppNet Program**: Orchestrates network functionality across microservices using a sequence of elements, each defined by match-action rules that control RPC content and element state.
 
-The data plane is composed of processors—such as sidecars, middleboxes, and RPC libraries—that execute the elemental operations at a low level. Each processor retrieves the compiled RPC processing logic from the control plane and periodically transmits logs, traces, and runtime statistical data back to the controller.
+2. **Control Plane**:
+   - A compiler that processes RPC definitions and chain specifications to generate optimized code modules
+   - A controller that maintains global knowledge of network topology, service locations, and available processors through integration with cluster managers (Kubernetes)
+
+3. **Data Plane**: Consists of various processors (sidecars, middleboxes, and RPC libraries) that execute elemental operations. These processors:
+   - Receive compiled RPC processing logic from the control plane
+   - Continuously report logs, traces, and runtime metrics to the controller
 
 
 ## Supported Data Plane Processors
@@ -29,7 +35,12 @@ The data plane is composed of processors—such as sidecars, middleboxes, and RP
 
 ## Contributors
 
-AppNet is written and maintained by [Xiangfeng Zhu](https://xzhu27.me/), [Yuyao Wang](https://kristoff-starling.github.io/), [Yongtong Wu](https://jokerwyt.github.io/), [Nikola Bojanic](https://github.com/NikolaBo), and [Banruo Liu](https://github.com/livingshade).
+AppNet is developed and maintained by:
+- [Xiangfeng Zhu](https://xzhu27.me/)
+- [Yuyao Wang](https://kristoff-starling.github.io/)
+- [Banruo Liu](https://github.com/livingshade)
+- [Yongtong Wu](https://jokerwyt.github.io/)
+- [Nikola Bojanic](https://github.com/NikolaBo)
 
 ## Getting help
 
